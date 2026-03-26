@@ -1,0 +1,33 @@
+@startuml class
+
+title COLORS Web Application - Class Diagram
+
+skinparam classAttributeIconSize 0
+
+class User {
+  - userID : int
+  - firstName : str
+  - lastName : str
+  - login : str
+  - password : str
+  + Login()
+  + Logout()
+}
+
+class Color {
+  - colorId : int
+  - name : str
+  - userId : int
+  + add()
+}
+
+class ColorServices {
+  + addColor()
+  + searchColors()
+}
+
+User "1" --> "1..*" Color : owns
+
+Color <|-- ColorServices
+
+@enduml

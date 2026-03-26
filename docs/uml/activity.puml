@@ -1,0 +1,41 @@
+@startuml activity
+
+title COLORS Web Application - Activity Diagram
+
+start
+
+:Access URL;
+
+repeat
+  :Enter Login Credentials;
+  :POST Login.php;
+  :Hash Password (MD5)\nQuery Users Table;
+
+  if (Valid?) then (yes)
+  else (no)
+    :Error;
+  endif
+repeat while (Valid?) is (no)
+
+:Save Cookie\nuserID, name (20m mins);
+
+:Redirect to color.html;
+
+repeat
+  if (Action?) then (Add color)
+    :Add color;
+    :POST AddColor.php;
+    :Insert into Colors\nwith userId;
+
+  elseif (Search) then
+    :Search color;
+    :POST SearchColors.php\nLIKE % partial match;
+    :Display result;
+
+  else (Logout)
+    :Clear cookie\nredirect to index.html;
+    stop
+  endif
+repeat while (Return to actions)
+
+@enduml

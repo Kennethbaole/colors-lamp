@@ -1,0 +1,25 @@
+@startuml usecase
+
+left to right direction
+skinparam packageStyle rectangle
+
+title COLORS Web Application - Use Case Diagram
+
+actor "User" as user
+
+rectangle "COLORS Web Application" {
+  usecase "Register" as UC1
+  usecase "Add Color" as UC2
+  usecase "Search Colors" as UC3
+  usecase "Login" as UC4
+}
+
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+
+UC2 ..> UC4 : <<Include>>
+UC3 ..> UC4 : <<Include>>
+
+@enduml

@@ -8,6 +8,7 @@ module.exports = [
       ecmaVersion: 2021,
       globals: {
         ...globals.browser,
+        module: "readonly",
       },
     },
     rules: {
